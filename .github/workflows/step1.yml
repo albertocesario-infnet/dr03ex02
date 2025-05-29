@@ -30,10 +30,10 @@ jobs:
         - id: calc
           shell: bash
           run: |
+              echo "text_secret =  $TEXT_IN_SECRET"
               TEXT="${{ inputs.text_in }}"
               NUM=${{ inputs.number_in }}
               NEW_TEXT="${TEXT}-${NUM}"
               NEW_NUM=$(( NUM * 2 ))
               echo "text_out=$NEW_TEXT" >> "$GITHUB_OUTPUT"
               echo "number_out=$NEW_NUM" >> "$GITHUB_OUTPUT"
-              echo "Secret recebido: $TEXT_IN_SECRET"
