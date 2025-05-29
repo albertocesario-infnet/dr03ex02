@@ -1,0 +1,36 @@
+name: W4 reutilizável - Sumariza
+on:
+ workflow_call:
+  inputs:
+      text_in:
+        description: Texto de entrada
+        required: true
+        type: string
+      number_in:
+        description: Número de entrada
+        required: true
+        type: number
+  outputs:
+      text_out:
+        description: Texto modificado
+        value: ${{ jobs.transform.outputs.text_out }}
+      number_out:
+        description: Número modificado
+        value: ${{  jobs.transform.outputs.number_out }}
+jobs:
+   transform:
+     runs-on: ubuntu-latest
+     outputs:
+        text_out: ${{ steps.calc.outputs.text_out }}
+        number_out: ${{ steps.calc.outputs.number_out }}
+     steps:
+        - id: calc
+          shell: bash
+          run: |
+              TEXT="${{ inputs.text_in }}"
+              NUM=${{ inputs.number_in }}
+              echo "### Resultado Final" >> "$GITHUB_STEP_SUMMARY" 
+              echo "- Texto Final: $TEXT" >> "$GITHUB_STEP_SUMMARY"
+              echo "- Número Final: $NUM" >> "$GITHUB_STEP_SUMMARY"
+              echo "text_out=$TEXT" >> "$GITHUB_OUT"
+              echo "number_out=$NUM" >> "$GITHUB_OUT"
