@@ -31,5 +31,5 @@ jobs:
               NUM=${{ inputs.number_in }}
               NEW_TEXT="$(echo "$TEXT" | rev)"
               NEW_NUM=$(( NUM * 3 ))
-              echo "text_out=$NEW_TEXT" >> "$GITHUB_OUT"
-              echo "number_out=$NEW_NUM" >> "$GITHUB_OUT"
+              echo "text_out=$NEW_TEXT" >> "$GITHUB_OUTPUT"
+              echo "number_out=$NEW_NUM" >> "$GITHUB_OUTPUT"
