@@ -36,3 +36,4 @@ jobs:
               NEW_NUM=$(( NUM * 2 ))
               echo "text_out=$NEW_TEXT" >> "$GITHUB_OUTPUT"
               echo "number_out=$NEW_NUM" >> "$GITHUB_OUTPUT"
+              echo "Secret recebido: $TEXT_IN_SECRET"
