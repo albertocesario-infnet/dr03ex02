@@ -16,7 +16,7 @@ jobs:
   step1:
     uses: ./.github/workflows/step1.yml
     with:
-      text_in: ${{ vars.TEXT_IN }}
+      text_in: ${{ secrets.TEXT_IN_SECRET }}
       number_in: ${{ fromJson(vars.NUMBER_IN) }}
 
   step2:
