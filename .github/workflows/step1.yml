@@ -1,6 +1,9 @@
 name: W1 reutilizável - Adiciona ao texto e Dobra o número
 on:
  workflow_call:
+  secrets:
+   TEXT_IN_SECRET:
+    required: true
   inputs:
       text_in:
         description: Texto de entrada
